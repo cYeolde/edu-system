@@ -1,17 +1,17 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import LoginPage from '@/views/LoginPage.vue'
-import StudentPage from "@/views/StudentPage.vue";
-import DeanPage from "@/views/DeanPage.vue";
-import StudentInfo from "@/views/StudentInfo.vue";
-import StudentGrades from "@/views/StudentGrades.vue";
-import StudentCourses from "@/views/StudentCourses.vue";
-import StudentCourseSchedule from "@/views/StudentCourseSchedule.vue";
-import StudentExamSchedule from "@/views/StudentExamSchedule.vue";
-import StudentNotifications from "@/views/StudentNotifications.vue";
-import CourseManagement from "@/views/CourseManagement.vue";
-import GradesManagement from "@/views/GradesManagement.vue";
-import NotificationManagement from "@/views/NotificationManagement.vue";
-import ManagerInfo from "@/views/ManagerInfo.vue";
+import StudentPage from "@/views/studentViews/StudentPage.vue";
+import DeanPage from "@/views/deanViews/DeanPage.vue";
+import StudentInfo from "@/views/studentViews/StudentInfo.vue";
+import StudentGrades from "@/views/studentViews/StudentGrades.vue";
+import StudentCourses from "@/views/studentViews/StudentCourses.vue";
+import StudentCourseSchedule from "@/views/studentViews/StudentCourseSchedule.vue";
+import StudentExamSchedule from "@/views/studentViews/StudentExamSchedule.vue";
+import StudentNotifications from "@/views/studentViews/StudentNotifications.vue";
+import CourseManagement from "@/views/deanViews/CourseManagement.vue";
+import GradesManagement from "@/views/deanViews/GradesManagement.vue";
+import NotificationManagement from "@/views/deanViews/NotificationManagement.vue";
+import ManagerInfo from "@/views/deanViews/ManagerInfo.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {

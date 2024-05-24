@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import InfoManagement from "@/views/InfoManagement.vue";
+import InfoManagement from "@/views/deanViews/InfoManagement.vue";
 </script>
 
 <template>
