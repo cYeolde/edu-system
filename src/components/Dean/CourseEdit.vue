@@ -68,11 +68,6 @@ const options1= [
     label: '专业限选',
   },
 ]
-
-
-
-
-
 </script>
 
 <template>

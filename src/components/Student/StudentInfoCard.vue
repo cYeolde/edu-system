@@ -1,7 +1,6 @@
 <template>
   <div>
     <h3>个人信息</h3>
-    <el-card>
       <!-- 学生详细信息表格 -->
       <el-table
           :data="detailedStudentInfo"
@@ -21,13 +20,12 @@
         <el-table-column label="院系" prop="department"></el-table-column>
         <el-table-column label="专业" prop="major"></el-table-column>
       </el-table>
-    </el-card>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { ElCard, ElTable, ElTableColumn } from 'element-plus';
+import { ElTable, ElTableColumn } from 'element-plus';
 
 // 学生基本信息
 const studentInfo = ref({

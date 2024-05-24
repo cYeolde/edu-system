@@ -1,8 +1,6 @@
 <template>
-
   <div>
     <h2>课程管理</h2>
-
   </div>
   <!--表单区域-->
   <el-form inline>
@@ -27,7 +25,10 @@
     <el-button type="primary" @click="onAddCourse">添加课程</el-button>
   </el-form>
   <!--表格区域-->
-  <el-table :data="courseData" stripe style="width: 100%">
+  <el-table
+      :data="courseData"
+      stripe
+      style="width: 100%">
     <el-table-column prop="name" label="课程"  width="180" >
       <template #default="{ row }">
         <el-link type="primary" :underline="false">{{ row.name }}</el-link>
@@ -67,8 +68,6 @@
   </div>
 <!--添加需要编辑的抽屉-->
   <course-edit ref="courseEditRef"></course-edit>
-
-
 
 </template>
 <script setup lang="ts">
