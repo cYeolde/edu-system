@@ -1,6 +1,5 @@
 <template>
   <div class="navBar">
-    <h3 class="mb-2">教务管理</h3>
     <el-menu
         default-active="grades-management"
         class="el-menu-vertical-demo"
@@ -10,32 +9,40 @@
     >
       <el-menu-item @click="toggleCollapse">
         <el-icon :class="['menu-icon',{'expand':!isCollapse}]">
-          <More />
+          <More/>
         </el-icon>
       </el-menu-item>
-        <el-menu-item index="grades-management" @click="handleMenuSelect('dean/grades-management')">
-          <el-icon><Check /></el-icon>
-          <span>成绩管理</span>
-        </el-menu-item>
+      <el-menu-item index="grades-management" @click="handleMenuSelect('dean/grades-management')">
+        <el-icon>
+          <Check/>
+        </el-icon>
+        <template #title>个人信息</template>
+      </el-menu-item>
       <el-menu-item index="course-management" @click="handleMenuSelect('dean/course-management')">
-        <el-icon><Reading /></el-icon>
-        <span>课程管理</span>
+        <el-icon>
+          <Reading/>
+        </el-icon>
+        <template #title>课程管理</template>
       </el-menu-item>
       <el-menu-item index="notification-management" @click="handleMenuSelect('dean/notification-management')">
-        <el-icon><Notification /></el-icon>
-        <span>通知管理</span>
+        <el-icon>
+          <Notification/>
+        </el-icon>
+        <template #title>通知管理</template>
       </el-menu-item>
       <el-menu-item index="exam-management" @click="handleMenuSelect('dean/exam-management')">
         <el-icon><Calendar /></el-icon>
-        <span>考试管理</span>
+        <template #title>考试管理</template>
       </el-menu-item>
       <el-menu-item index="course-list" @click="handleMenuSelect('dean/course-list')">
         <el-icon><Connection /></el-icon>
-        <span>选课名单</span>
+        <template #title>选课名单</template>
       </el-menu-item>
       <el-sub-menu index="info-management" @click="handleMenuSelect('dean/info-management')">
         <template #title>
-          <el-icon><User /></el-icon>
+          <el-icon>
+            <User/>
+          </el-icon>
           <span>师生信息</span>
         </template>
         <el-menu-item-group>
@@ -45,21 +52,21 @@
       </el-sub-menu>
       <el-menu-item index="admin" @click="handleMenuSelect('dean/manager-info')" >
         <el-icon><Setting /></el-icon>
-        <span>管理员</span>
+        <template #title>管理员</template>
       </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { More, User, Check, Connection, Reading, Calendar, Notification,Setting } from '@element-plus/icons-vue'
-import { useRouter } from 'vue-router'
-import { ref } from 'vue'
+import {More, User, Check, Connection, Reading, Calendar, Notification, Setting} from '@element-plus/icons-vue'
+import {useRouter} from 'vue-router'
+import {ref} from 'vue'
 
 const isCollapse = ref(true)
 const router = useRouter()
 const handleMenuSelect = (index: string) => {
-  const route=`/${index}`
+  const route = `/${index}`
   router.push(route)
 }
 const toggleCollapse = () => {
@@ -74,7 +81,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 </script>
 
 <style scoped>
-.navBar{
+.navBar {
   position: fixed;
   top: 0;
   left: 0;

@@ -1,6 +1,6 @@
 <template>
   <div class="course-selection">
-    <h2>选课</h2>
+    <h3>选课</h3>
     <el-row :gutter="20">
       <el-col :span="6" v-for="course in courses" :key="course.id">
         <CourseCard :course="course" @select="handleSelect" />
