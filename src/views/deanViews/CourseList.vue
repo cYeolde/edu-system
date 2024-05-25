@@ -1,15 +1,9 @@
 <script setup lang="ts">
-
+import CourseList from "@/components/Dean/CourseList.vue";
 </script>
 
 <template>
-   <div>
-     <h3>信息管理</h3>
-   </div>
-
-
-
-
+<CourseList/>
 </template>
 
 <style scoped>

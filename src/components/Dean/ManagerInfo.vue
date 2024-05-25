@@ -4,22 +4,34 @@ import axios from 'axios'
 
 
 // 获取数据并写入表单
-
     const infoForm = reactive({
       name: '',
       id: '',
       password: '',
-      address: '',
-      date: '',
+      address: '安徽',
+      date: '2000-01-01',
       sex:'',
 
     })
 
-
-
-const onSubmit = () => {
-  console.log('submit!')
+const options = [
+  {
+    value: 'man',
+    label: '男',
+  },
+  {
+    value: 'woman',
+    label: '女',
+  },
+]
+const onLogout = () => {
+  console.log('onLogout!')
 }
+
+const onEdit = () => {
+  console.log('onLogout!')
+}
+
 </script>
 
 <template>
@@ -45,38 +57,51 @@ const onSubmit = () => {
 
   <el-form :model="infoForm" label-width="auto" style="max-width: 600px">
     <el-form-item label="姓名">
-      <el-input v-model="infoForm.name" placeholder="please select your zone" />
+      <el-input v-model="infoForm.name" placeholder="infoForm.name" />
     </el-form-item>
     <el-form-item label="工号">
-      <el-input v-model="infoForm.id" placeholder="please select your zone" />
+      <el-input v-model="infoForm.id" placeholder="infoForm.id" />
     </el-form-item>
     <el-form-item label="密码">
-      <el-input v-model="infoForm.password" placeholder="please select your zone"/>
+      <el-input v-model="infoForm.password" placeholder="infoForm.password"/>
     </el-form-item>
     <el-form-item label="居住地址">
-      <el-select v-model="infoForm.address" placeholder="please select your zone">
+      <el-select v-model="infoForm.address" placeholder="infoForm.address">
         <el-option label="Zone one" value="shanghai" />
         <el-option label="Zone two" value="beijing" />
       </el-select>
     </el-form-item>
-    <el-form-item label="出生日期">
+    <el-form-item label="出生日期"  style="width: 600px">
       <el-col :span="11">
         <el-date-picker
             v-model="infoForm.date"
             type="date"
-            placeholder="Pick a date"
+            placeholder="infoForm.date"
             style="width: 100%"
         />
       </el-col>
     </el-form-item>
     <el-form-item label="性别">
-      <el-input v-model="infoForm.sex" placeholder="please select your zone"/>
+      <el-select
+          v-model="infoForm.sex"
+          placeholder="infoForm.sex"
+          size="large"
+          style="width: 240px"
+      >
+        <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+        />
+      </el-select>
     </el-form-item>
-     <el-form-item>
-       <el-button label="修改信息"></el-button>
-       <el-button label="修改信息"></el-button>
+     <el-form-item  style="display: flex; justify-content: center;">
+       <el-button type="primary" @click="onLogout">登出</el-button>
+       <el-button type="primary" @click="onEdit">修改信息</el-button>
      </el-form-item>
   </el-form>
+
 </template>
 
 <style scoped>

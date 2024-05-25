@@ -1,24 +1,61 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
 
-// do not use same name with ref
-const form = reactive({
-  name: '',
-  region: '',
-  date1: '',
-  date2: '',
-  delivery: false,
-  type: [],
-  resource: '',
-  desc: '',
+import {reactive, ref} from 'vue'
+
+const formInline = reactive({
+  number: '',//学号
+  name: '',//课程
+
 })
 
-const onSubmit = () => {
+
+const gradeData=[
+  {
+    number: '',//学号
+    name: '',//课程
+    grade:'',//成绩
+    teacher:'',
+    location:'',
+
+  }
+]
+
+
+
+const currentPage3 = ref(5)
+const pageSize3 = ref(100)
+const small = ref(false)
+const background = ref(false)
+const disabled = ref(false)
+
+const handleSizeChange = (val: number) => {
+  console.log(`${val} items per page`)
+}
+const handleCurrentChange = (val: number) => {
+  console.log(`current page: ${val}`)
+}
+
+
+const onQuery = () => {
   console.log('submit!')
+}
+
+const onReset = () => {
+
+}
+const onEdit =()=>{
+
+}
+const onDelete=()=>{
+
 }
 </script>
 
+
+
+
 <template>
+
   <div>
     <h2>成绩管理</h2>
   </div>
@@ -27,71 +64,56 @@ const onSubmit = () => {
   成绩管理：增删改查
        某个学生的单科成绩和全部成绩
        某个教学班的成绩
-       整个年级的成绩
   -->
-  <el-form :model="form" label-width="auto" style="max-width: 600px">
-    <el-form-item label="Activity name">
-      <el-input v-model="form.name" />
+  <el-form :inline="true" :model="formInline" class="demo-form-inline">
+    <el-form-item label="学号">
+      <el-input v-model="formInline.number" placeholder="请输入学号" clearable />
     </el-form-item>
-    <el-form-item label="Activity zone">
-      <el-select v-model="form.region" placeholder="please select your zone">
-        <el-option label="Zone one" value="shanghai" />
-        <el-option label="Zone two" value="beijing" />
-      </el-select>
-    </el-form-item>
-    <el-form-item label="Activity time">
-      <el-col :span="11">
-        <el-date-picker
-            v-model="form.date1"
-            type="date"
-            placeholder="Pick a date"
-            style="width: 100%"
-        />
-      </el-col>
-      <el-col :span="2" class="text-center">
-        <span class="text-gray-500">-</span>
-      </el-col>
-      <el-col :span="11">
-        <el-time-picker
-            v-model="form.date2"
-            placeholder="Pick a time"
-            style="width: 100%"
-        />
-      </el-col>
-    </el-form-item>
-    <el-form-item label="Instant delivery">
-      <el-switch v-model="form.delivery" />
-    </el-form-item>
-    <el-form-item label="Activity type">
-      <el-checkbox-group v-model="form.type">
-        <el-checkbox value="Online activities" name="type">
-          Online activities
-        </el-checkbox>
-        <el-checkbox value="Promotion activities" name="type">
-          Promotion activities
-        </el-checkbox>
-        <el-checkbox value="Offline activities" name="type">
-          Offline activities
-        </el-checkbox>
-        <el-checkbox value="Simple brand exposure" name="type">
-          Simple brand exposure
-        </el-checkbox>
-      </el-checkbox-group>
-    </el-form-item>
-    <el-form-item label="Resources">
-      <el-radio-group v-model="form.resource">
-        <el-radio value="Sponsor">Sponsor</el-radio>
-        <el-radio value="Venue">Venue</el-radio>
-      </el-radio-group>
-    </el-form-item>
-    <el-form-item label="Activity form">
-      <el-input v-model="form.desc" type="textarea" />
+    <el-form-item label="课程">
+      <el-input v-model="formInline.name" placeholder="请输入课程" clearable />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="onSubmit">Create</el-button>
-      <el-button>Cancel</el-button>
+      <el-button type="primary" @click="onQuery">查询</el-button>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="onReset">重置</el-button>
     </el-form-item>
   </el-form>
+  <el-table
+      :data="gradeData"
+      stripe
+      style="width: 100%">
+    <el-table-column prop="name" label="学号"  width="180" ></el-table-column>
+    <el-table-column prop="name" label="课程"  width="180" ></el-table-column>
+    <el-table-column prop="name" label="成绩"  width="180" ></el-table-column>
+    <el-table-column prop="teacher" label="授课教师" width="180" />
+    <el-table-column prop="location" label="授课地点" width="180" />
+    <el-table-column fixed="right" label="操作" width="120">
+    <template #default="{ row }">
+      <el-button link type="primary" size="small" @click="onEdit()">
+        编辑
+      </el-button>
+      <el-button link type="primary" size="small"  @click="onDelete()">
+        删除
+      </el-button>
+    </template>
+  </el-table-column>
+  </el-table>
+  <!--分页-->
+  <div class="demo-pagination-block">
+    <el-pagination
+        v-model:current-page="currentPage3"
+        v-model:page-size="pageSize3"
+        :small="small"
+        :disabled="disabled"
+        :background="background"
+        layout="prev, pager, next, jumper"
+        :total="1000"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        style="margin-top:20px;justify-content:center "
+    />
+  </div>
 
 
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ExamManagement from "@/views/deanViews/ExamManagement.vue";
+import ExamManagement from "@/components/Dean/ExamManagement.vue";
 </script>
 
 <template>

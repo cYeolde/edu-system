@@ -25,25 +25,25 @@
         <el-icon><Notification /></el-icon>
         <span>通知管理</span>
       </el-menu-item>
-      <el-menu-item index="exam-management" @click="handleMenuSelect('dean/grades-management')">
+      <el-menu-item index="exam-management" @click="handleMenuSelect('dean/exam-management')">
         <el-icon><Calendar /></el-icon>
         <span>考试管理</span>
       </el-menu-item>
-      <el-menu-item index="" @click="handleMenuSelect('dean/grades-management')">
+      <el-menu-item index="course-list" @click="handleMenuSelect('dean/course-list')">
         <el-icon><Connection /></el-icon>
         <span>选课名单</span>
       </el-menu-item>
-      <el-sub-menu index="" @click="handleMenuSelect('dean/grades-management')">
+      <el-sub-menu index="info-management" @click="handleMenuSelect('dean/info-management')">
         <template #title>
           <el-icon><User /></el-icon>
           <span>师生信息</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="teacher-info">教师信息</el-menu-item>
-          <el-menu-item index="student-info">学生信息</el-menu-item>
+          <el-menu-item index="teacher-info" @click="handleMenuSelect('dean/teacher-info')">教师信息</el-menu-item>
+          <el-menu-item index="students-info" @click="handleMenuSelect('dean/students-info')">学生信息</el-menu-item>
         </el-menu-item-group>
       </el-sub-menu>
-      <el-menu-item index="admin">
+      <el-menu-item index="admin" @click="handleMenuSelect('dean/manager-info')" >
         <el-icon><Setting /></el-icon>
         <span>管理员</span>
       </el-menu-item>

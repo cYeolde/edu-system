@@ -12,6 +12,10 @@ import CourseManagement from "@/views/deanViews/CourseManagement.vue";
 import GradesManagement from "@/views/deanViews/GradesManagement.vue";
 import NotificationManagement from "@/views/deanViews/NotificationManagement.vue";
 import ManagerInfo from "@/views/deanViews/ManagerInfo.vue";
+import ExamManagement from "@/views/deanViews/ExamManagement.vue";
+import CourseList from "@/views/deanViews/CourseList.vue";
+import TeacherInfo from "@/components/Dean/TeacherInfo.vue";
+import StudentsInfo from "@/components/Dean/StudentsInfo.vue"
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -88,6 +92,26 @@ const routes: Array<RouteRecordRaw> = [
                 path:'manager-info',
                 name:'ManagerInfo',
                 component:ManagerInfo,
+            },
+            {
+                path:'exam-management',
+                name:'ExamManagement',
+                component:ExamManagement,
+            },
+            {
+                path:'course-list',
+                name:'CourseList',
+                component:CourseList,
+            },
+            {
+                path:'students-info',
+                name:'StudentsInfo',
+                component:StudentsInfo,
+            },
+            {
+                path:'teacher-info',
+                name:'TeacherInfo',
+                component:TeacherInfo,
             }
         ],
     }
