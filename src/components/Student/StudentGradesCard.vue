@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>成绩单</h3>
-    <el-table :data="courses" border style="width: 100%">
+    <el-table :data="studentGrades" border style="width: 100%">
       <el-table-column prop="courseName" label="课程名称" width="200"></el-table-column>
       <el-table-column prop="studyTime" label="修读时间" width="300"></el-table-column>
       <el-table-column prop="score" label="分数">
@@ -12,7 +12,7 @@
       <el-table-column prop="gradePoint" label="绩点"></el-table-column>
       <el-table-column prop="retake" label="是否重修">
         <template v-slot="{ row }:{ row: { retake:boolean } }">
-          {{ row.retake ? '是' : '否' }}
+          <span>{{ row.retake ? '是' : '否' }}</span>
         </template>
       </el-table-column>
     </el-table>
@@ -20,48 +20,45 @@
 </template>
 
 <script setup lang="ts">
-import {ref, onMounted} from 'vue';
+import {reactive, onMounted} from 'vue';
 
-const courses = ref([
+const studentGrades = reactive([
   {
-    courseName: '计算机网络',
-    studyTime: '2021-2022学年第一学期',
-    score: 90,
-    gradePoint: 4.0,
-    retake: false,
-  },
-  {
-    courseName: '数据库系统',
-    studyTime: '2021-2022学年第一学期',
-    score: 100,
-    gradePoint: 3.7,
-    retake: false,
-  },
-  {
-    courseName: '操作系统',
-    studyTime: '2021-2022学年第一学期',
-    score: 58,
-    gradePoint: 1.0,
-    retake: false,
-  },
+    /**
+     * 课程名称
+     * 修读时间
+     * 分数
+     * 绩点
+     * 是否重修
+     */
+    // courseName: '',
+    // studyTime: '',
+    // score: '',
+    // gradePoint: '',
+    // retake: '',
+  }
 ]);
 
-//const courses = ref([]);
-
-// 获取课程数据的方法
-const fetchCourses = async () => {
-
-
+const fetchStudentGrades = async () => {
   try {
-    const response = await fetch('/api/courses');
-    const data = await response.json();
-    courses.value = data;
-  } catch (error) {
-    console.error('Failed to fetch courses', error);
+    const res = await fetch('http://localhost:8080/studentGrades', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if(!res.ok) {
+      console.error('Failed to fetch student grades');
+    }
+
+    const data = await res.json();
+    Object.assign(studentGrades, data);
+  }catch (error) {
+    console.error('Failed to fetch student grades');
   }
 };
 
-onMounted(fetchCourses);
+onMounted(fetchStudentGrades);
 </script>
 
 <style scoped>

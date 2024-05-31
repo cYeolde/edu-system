@@ -11,6 +11,15 @@ const value = ref('')
 //准备数据
 let teacher_infoData = reactive([
   {
+    /**
+     * 学号
+     * 姓名
+     * 性别
+     * 出生日期
+     * 民族
+     * 身份证号
+     * 籍贯
+     */
     number: '',
     name: '',
     gender: '',
@@ -76,9 +85,6 @@ const handleCurrentChange = (val: number) => {
   console.log(`current page: ${val}`)
 }
 
-
-
-
 </script>
 
 <template>
@@ -87,7 +93,7 @@ const handleCurrentChange = (val: number) => {
   </h3></div>
   <!--表单区域-->
   <el-form inline>
-    <el-form-item label="工号">
+    <el-form-item label="学号">
       <el-input v-model="input" style="width: 240px" placeholder="Please input"/>
     </el-form-item>
     <el-form-item label="姓名">

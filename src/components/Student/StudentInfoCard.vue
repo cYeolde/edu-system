@@ -3,7 +3,7 @@
     <h3>个人信息</h3>
     <!-- 学生详细信息表格 -->
     <el-table
-        :data="detailedStudentInfo"
+        :data=[studentInfo]
         stripe
         border
         style="width: 100%">
@@ -16,7 +16,6 @@
       <el-table-column label="身份证号" prop="id"></el-table-column>
       <el-table-column label="籍贯" prop="birthPlace"></el-table-column>
       <el-table-column label="年级" prop="grade"></el-table-column>
-      、
       <el-table-column label="班级" prop="class"></el-table-column>
       <el-table-column label="院系" prop="department"></el-table-column>
       <el-table-column label="专业" prop="major"></el-table-column>
@@ -25,33 +24,62 @@
 </template>
 
 <script setup lang="ts">
-import {ref, onMounted} from 'vue';
+import {reactive, onMounted} from 'vue';
 import {ElTable, ElTableColumn} from 'element-plus';
 
-// 学生基本信息
-const studentInfo = ref({});
+const studentInfo = reactive({
+  /**
+   * 学号
+   * 姓名
+   * 性别
+   * 出生日期
+   * 民族
+   * 政治面貌
+   * 身份证号
+   * 籍贯
+   * 年级
+   * 班级
+   * 院系
+   * 专业
+   */
+  // number: '',
+  // name: '',
+  // gender: '',
+  // birthDate: '',
+  // nation: '',
+  // politics: '',
+  // id: '',
+  // birthPlace: '',
+  // grade: '',
+  // class: '',
+  // department: '',
+  // major: ''
+})
 
-// 学生详细信息数据（假数据，实际需根据业务获取）
-const detailedStudentInfo = ref([]);
+// 请求学生详细信息的函数
+const fetchStudentInfo = async () => {
+  try {
+    const res = await fetch('http://localhost:8080/studentInfo', { // 请根据实际的后端接口地址替换
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (!res.ok) {
+      console.error('Failed to fetch student information');
+    }
 
-// 模拟获取学生个人信息的函数
-const fetchStudentInfo = () => {
-  // 模拟异步获取学生信息
-  setTimeout(() => {
-    studentInfo.value = {
-      name: '张三',
-      studentId: '20230001',
-      class: '高三一班',
-      contact: '13812345678'
-      // 其他个人信息
-    };
-  }, 500); // 延迟 500ms 模拟请求耗时
+    const data = await res.json();
+
+    // 更新studentInfo的值
+    Object.assign(studentInfo, data);
+  } catch (error) {
+    console.error('Error fetching student information:', error);
+  }
 };
 
-// 在组件挂载后获取学生个人信息
-onMounted(() => {
-  fetchStudentInfo();
-});
+onMounted(fetchStudentInfo);
+
 </script>
 
 <style scoped>

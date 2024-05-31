@@ -89,4 +89,13 @@ const handleClose = (key: string, keyPath: string[]) => {
   height: 100vh;
   z-index: 1000;
 }
+
+.menu-icon {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-icon.expand {
+  transform: rotate(90deg);
+}
 </style>

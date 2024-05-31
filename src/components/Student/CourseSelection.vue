@@ -3,14 +3,14 @@
     <h3>选课</h3>
     <el-row :gutter="20">
       <el-col :span="6" v-for="course in courses" :key="course.id">
-        <CourseCard :course="course" @select="handleSelect"/>
+        <CourseCard :course="course" @select="handleSelect" />
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import { ref } from 'vue';
 import {ElRow, ElCol, ElNotification} from 'element-plus';
 import CourseCard from './CourseCard.vue';
 
@@ -64,21 +64,21 @@ const courses = ref([
 const selectedCourses = ref([]);
 
 const handleSelect = (course) => {
-  if (course.selected_number >= course.capacity) {
+  if(course.selected_number >= course.capacity) {
     ElNotification({
       title: '选课失败',
       message: '课程已满',
       type: 'error',
     });
   }
-      // else if(selectedCourses.value.find(c => c.id === course.id)) {
-      //   ElNotification({
-      //     title: '选课失败',
-      //     message: '课程已选',
-      //     type: 'error',
-      //   });
+  // else if(selectedCourses.value.find(c => c.id === course.id)) {
+  //   ElNotification({
+  //     title: '选课失败',
+  //     message: '课程已选',
+  //     type: 'error',
+  //   });
   // }
-  else if (course.selected_number < course.capacity) {
+  else if(course.selected_number<course.capacity){
     course.selected_number++;
     selectedCourses.value.push(course);
     ElNotification({
