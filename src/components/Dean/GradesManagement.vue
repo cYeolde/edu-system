@@ -9,17 +9,16 @@ const formInline = reactive({
 })
 
 
-const gradeData=[
+const gradeData = [
   {
     number: '',//学号
     name: '',//课程
-    grade:'',//成绩
-    teacher:'',
-    location:'',
+    grade: '',//成绩
+    teacher: '',
+    location: '',
 
   }
 ]
-
 
 
 const currentPage3 = ref(5)
@@ -43,15 +42,13 @@ const onQuery = () => {
 const onReset = () => {
 
 }
-const onEdit =()=>{
+const onEdit = () => {
 
 }
-const onDelete=()=>{
+const onDelete = () => {
 
 }
 </script>
-
-
 
 
 <template>
@@ -67,10 +64,10 @@ const onDelete=()=>{
   -->
   <el-form :inline="true" :model="formInline" class="demo-form-inline">
     <el-form-item label="学号">
-      <el-input v-model="formInline.number" placeholder="请输入学号" clearable />
+      <el-input v-model="formInline.number" placeholder="请输入学号" clearable/>
     </el-form-item>
     <el-form-item label="课程">
-      <el-input v-model="formInline.name" placeholder="请输入课程" clearable />
+      <el-input v-model="formInline.name" placeholder="请输入课程" clearable/>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onQuery">查询</el-button>
@@ -83,21 +80,21 @@ const onDelete=()=>{
       :data="gradeData"
       stripe
       style="width: 100%">
-    <el-table-column prop="name" label="学号"  width="180" ></el-table-column>
-    <el-table-column prop="name" label="课程"  width="180" ></el-table-column>
-    <el-table-column prop="name" label="成绩"  width="180" ></el-table-column>
-    <el-table-column prop="teacher" label="授课教师" width="180" />
-    <el-table-column prop="location" label="授课地点" width="180" />
+    <el-table-column prop="name" label="学号" width="180"></el-table-column>
+    <el-table-column prop="name" label="课程" width="180"></el-table-column>
+    <el-table-column prop="name" label="成绩" width="180"></el-table-column>
+    <el-table-column prop="teacher" label="授课教师" width="180"/>
+    <el-table-column prop="location" label="授课地点" width="180"/>
     <el-table-column fixed="right" label="操作" width="120">
-    <template #default="{ row }">
-      <el-button link type="primary" size="small" @click="onEdit()">
-        编辑
-      </el-button>
-      <el-button link type="primary" size="small"  @click="onDelete()">
-        删除
-      </el-button>
-    </template>
-  </el-table-column>
+      <template #default="{ row }">
+        <el-button link type="primary" size="small" @click="onEdit()">
+          编辑
+        </el-button>
+        <el-button link type="primary" size="small" @click="onDelete()">
+          删除
+        </el-button>
+      </template>
+    </el-table-column>
   </el-table>
   <!--分页-->
   <div class="demo-pagination-block">
@@ -114,7 +111,6 @@ const onDelete=()=>{
         style="margin-top:20px;justify-content:center "
     />
   </div>
-
 
 
 </template>

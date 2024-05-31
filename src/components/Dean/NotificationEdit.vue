@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import {ref} from "vue";
-import { QuillEditor } from '@vueup/vue-quill';
+import {QuillEditor} from '@vueup/vue-quill';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import {ElMessage} from "element-plus";
 
 
-
-const visibleDrawer=ref(false)
+const visibleDrawer = ref(false)
 //日期选择器
 const size = ref<'default' | 'large' | 'small'>('default')
 
@@ -22,50 +21,50 @@ const options = [
 ]
 
 //默认数据
-const defaultData={
-  id:'',
+const defaultData = {
+  id: '',
   name: '',//标题
   date: '',//日期
-  time:'',//时间
+  time: '',//时间
   state: '',//状态
   issuer: '',//发布人
-  content:''//通知内容
+  content: ''//通知内容
 }
 
 //准备数据
-const formModel=ref({
- ...defaultData
+const formModel = ref({
+  ...defaultData
 })
- const onPublish=(state)=>{
+const onPublish = (state) => {
 
   //将已发布或者草稿的状态存入formModel
-  formModel.value.state=state
+  formModel.value.state = state
 
-   //转化对象
-   const  fd=new FormData()
-   for (let key in formModel.value){
-     fd.append(key,formModel.value[key])
-   }
+  //转化对象
+  const fd = new FormData()
+  for (let key in formModel.value) {
+    fd.append(key, formModel.value[key])
+  }
 
-   //发请求
-   if (formModel.value.id){
-     //编辑操作
-     console.log('编辑操作')
-   }else{
-     //添加操作
-     console.log('添加操作')
-     ElMessage.success('添加成功')
-     visibleDrawer.value=false
-     //通知父组件
-     //emit('success','add')
-   }
- }
-const open = ( row )=>{
-  visibleDrawer.value=true
-  if(row.id){
+  //发请求
+  if (formModel.value.id) {
+    //编辑操作
+    console.log('编辑操作')
+  } else {
+    //添加操作
+    console.log('添加操作')
+    ElMessage.success('添加成功')
+    visibleDrawer.value = false
+    //通知父组件
+    //emit('success','add')
+  }
+}
+const open = (row) => {
+  visibleDrawer.value = true
+  if (row.id) {
     console.log('编辑回显')
-  }else{
-    formModel.value={
+  } else {
+    formModel.value = {
       ...defaultData
     }
     console.log('添加')
@@ -120,13 +119,13 @@ defineExpose({
       </el-form-item>
       <el-form-item label="时间">
         <div class="example-basic">
-          <el-time-picker v-model="formModel.time" placeholder="Arbitrary time" />
+          <el-time-picker v-model="formModel.time" placeholder="Arbitrary time"/>
         </div>
       </el-form-item>
       <el-form-item label="发布人" prop="issuer">
         <el-input v-model="formModel.issuer" placeholder="请选择发布人"></el-input>
       </el-form-item>
-      <el-form-item label="通知内容" prop="content" >
+      <el-form-item label="通知内容" prop="content">
         <div class="editor">
           <quill-editor
               v-model:content="formModel.content"
@@ -152,11 +151,14 @@ defineExpose({
   justify-content: center; /* 水平居中 */
   gap: 10px; /* 按钮之间的间距 */
 }
+
 .editor {
   width: 100%;
+
   :deep(.ql-toolbar) {
     text-align: left;
   }
+
   :deep(.ql-editor) {
     min-height: 600px;
   }

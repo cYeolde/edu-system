@@ -38,7 +38,7 @@
         <el-icon><Connection /></el-icon>
         <template #title>选课名单</template>
       </el-menu-item>
-      <el-sub-menu index="info-management" @click="handleMenuSelect('dean/info-management')">
+      <el-sub-menu index="info-management" >
         <template #title>
           <el-icon>
             <User/>

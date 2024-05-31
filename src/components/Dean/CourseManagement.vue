@@ -79,10 +79,10 @@ const onAddCourse=()=>{
   courseEditRef.value.open({})
 }
 
-const onEdit = (row) => {
+const onEdit = (row:any) => {
   courseEditRef.value.open({ row })
 }
-const onDelete = (row) => {
+const onDelete = (row:any) => {
   console.log(row)
 }
 const onSearch = () => {

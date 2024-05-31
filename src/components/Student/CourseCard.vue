@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { defineProps ,defineEmits } from 'vue';
+import {defineProps, defineEmits} from 'vue';
 
 const props = defineProps({
   course: {
@@ -23,7 +23,7 @@ const props = defineProps({
   }
 });
 
-const emits=defineEmits(['select']);
+const emits = defineEmits(['select']);
 
 const handleSelect = () => {
   emits('select', props.course);

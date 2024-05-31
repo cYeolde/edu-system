@@ -1,26 +1,26 @@
 <template>
   <div>
     <h3>成绩单</h3>
-      <el-table :data="courses" border style="width: 100%">
-        <el-table-column prop="courseName" label="课程名称" width="200"></el-table-column>
-        <el-table-column prop="studyTime" label="修读时间" width="300"></el-table-column>
-        <el-table-column prop="score" label="分数">
-          <template v-slot="{ row }:{ row: { score:number } }">
-            <span :style="{ color: row.score < 60 ? 'red' : 'black' }">{{ row.score }}</span>
-          </template>
-        </el-table-column>
-        <el-table-column prop="gradePoint" label="绩点"></el-table-column>
-        <el-table-column prop="retake" label="是否重修">
-          <template v-slot="{ row }:{ row: { retake:boolean } }">
-            {{ row.retake ? '是' : '否' }}
-          </template>
-        </el-table-column>
-      </el-table>
+    <el-table :data="courses" border style="width: 100%">
+      <el-table-column prop="courseName" label="课程名称" width="200"></el-table-column>
+      <el-table-column prop="studyTime" label="修读时间" width="300"></el-table-column>
+      <el-table-column prop="score" label="分数">
+        <template v-slot="{ row }:{ row: { score:number } }">
+          <span :style="{ color: row.score < 60 ? 'red' : 'black' }">{{ row.score }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="gradePoint" label="绩点"></el-table-column>
+      <el-table-column prop="retake" label="是否重修">
+        <template v-slot="{ row }:{ row: { retake:boolean } }">
+          {{ row.retake ? '是' : '否' }}
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import {ref, onMounted} from 'vue';
 
 const courses = ref([
   {

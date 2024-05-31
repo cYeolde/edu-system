@@ -10,14 +10,18 @@
                 type="primary"
                 @click="changeCount(1), getWeek(count)"
             >
-              <el-icon><DArrowLeft /></el-icon>
+              <el-icon>
+                <DArrowLeft/>
+              </el-icon>
             </el-button>
             <el-button round class="date-btn">本周</el-button>
             <el-button
                 type="primary"
                 @click="changeCount(-1), getWeek(count)"
             >
-              <el-icon><DArrowRight /></el-icon>
+              <el-icon>
+                <DArrowRight/>
+              </el-icon>
             </el-button>
           </el-button-group>
         </div>
@@ -59,11 +63,11 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import {ref, computed} from 'vue';
 import moment from 'moment';
-import {DArrowLeft,DArrowRight} from "@element-plus/icons-vue";
+import {DArrowLeft, DArrowRight} from "@element-plus/icons-vue";
 
-const weekCourse=[
+const weekCourse = [
   {
     week: 0,
     courses: [
@@ -245,7 +249,7 @@ const weekCourse=[
   },
 ]
 
-const colorList=[
+const colorList = [
   "#4BBDEE",
   "#E86EEB",
   "#4BBDEE",

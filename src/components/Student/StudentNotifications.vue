@@ -45,9 +45,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { ElMessage } from 'element-plus';
-import { Delete } from '@element-plus/icons-vue';
+import {ref, onMounted} from 'vue';
+import {ElMessage} from 'element-plus';
+import {Delete} from '@element-plus/icons-vue';
 
 interface Notification {
   id: number;
@@ -61,9 +61,9 @@ const activeTab = ref('unread');
 
 // 模拟数据
 const mockData: Notification[] = [
-  { id: 1, title: '系统通知1', content: '内容1...' },
-  { id: 2, title: '系统通知2', content: '内容2...' },
-  { id: 3, title: '系统通知3', content: '内容3...' }
+  {id: 1, title: '系统通知1', content: '内容1...'},
+  {id: 2, title: '系统通知2', content: '内容2...'},
+  {id: 3, title: '系统通知3', content: '内容3...'}
 ];
 
 const fetchNotifications = async () => {

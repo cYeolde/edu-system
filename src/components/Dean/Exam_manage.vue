@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref ,reactive} from 'vue'
-import { ElTable } from 'element-plus'
+import {ref, reactive} from 'vue'
+import {ElTable} from 'element-plus'
 
 //对话框隐藏
-const visibleDialog= ref(false)
+const visibleDialog = ref(false)
 
 //向父组件暴露对话框
-const open = ( row )=>{
-  visibleDialog.value=true
+const open = (row:any) => {
+  visibleDialog.value = true
   console.log(row)
 }
 defineExpose({
@@ -20,22 +20,22 @@ const formInline = reactive({
   date: '',
 })
 
-const onQuery=()=>{
+const onQuery = () => {
 
 }
-const onReset=()=>{
-   formInline.date=''
-   formInline.region=''
+const onReset = () => {
+  formInline.date = ''
+  formInline.region = ''
 
 }
-const onAffirm=()=>{
+const onAffirm = () => {
 
 }
 
 //表格内容
 interface User {
   exam_time: string
-  exam_venues:  string
+  exam_venues: string
 }
 
 const multipleTableRef = ref<InstanceType<typeof ElTable>>()
@@ -105,8 +105,8 @@ const tableData: User[] = [
             style="width:200px"
             clearable
         >
-          <el-option label="经信教学楼" value="shanghai" />
-          <el-option label="计算机楼" value="beijing" />
+          <el-option label="经信教学楼" value="shanghai"/>
+          <el-option label="计算机楼" value="beijing"/>
         </el-select>
       </el-form-item>
       <el-form-item label="考试时间">
@@ -131,12 +131,12 @@ const tableData: User[] = [
         style="width: 100%"
         @selection-change="handleSelectionChange"
     >
-      <el-table-column type="selection" width="55" />
+      <el-table-column type="selection" width="55"/>
       <el-table-column label="考试地点" width="120">
         <template #default="scope">{{ scope.row.exam_time }}</template>
       </el-table-column>
-      <el-table-column  label="时间" show-overflow-tooltip >
-        <template #default="scope">{{ scope.row. exam_venues }}</template>
+      <el-table-column label="时间" show-overflow-tooltip>
+        <template #default="scope">{{ scope.row.exam_venues }}</template>
       </el-table-column>
     </el-table>
     <div style="margin-top: 20px">
@@ -154,9 +154,11 @@ const tableData: User[] = [
   border-right: solid 1px var(--el-border-color);
   flex: 1;
 }
+
 .demo-datetime-picker .block:last-child {
   border-right: none;
 }
+
 .demo-datetime-picker .demonstration {
   display: block;
   color: var(--el-text-color-secondary);

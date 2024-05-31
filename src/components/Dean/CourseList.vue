@@ -1,12 +1,12 @@
 <script setup lang="ts">
 
-import { ref ,reactive} from 'vue'
+import {ref, reactive} from 'vue'
 
 
-const onEdit = (row) => {
+const onEdit = (row:any) => {
 
 }
-const onDelete = (row) => {
+const onDelete = (row:any) => {
   console.log(row)
 }
 const onSearch = () => {
@@ -30,22 +30,21 @@ const handleCurrentChange = (val: number) => {
 }
 
 
-
 const input = ref('')
 const value = ref('')
 
 //定义获取参数对象
-const params=ref({
-  pagenum:1,//当前页数
-  pagesize:5,//每页条数
+const params = ref({
+  pagenum: 1,//当前页数
+  pagesize: 5,//每页条数
 
 })
 
 //准备表格数据
 const listData = reactive([
   {
-    name:'',
-    number:'',
+    name: '',
+    number: '',
   },
 
 ])
@@ -59,11 +58,11 @@ const listData = reactive([
   <!--表单区域-->
   <el-form inline>
     <el-form-item label="课程名称">
-      <el-input v-model="input" style="width: 240px" placeholder="请输入课程" />
+      <el-input v-model="input" style="width: 240px" placeholder="请输入课程"/>
     </el-form-item>
     <el-form-item>
-    <el-button type="primary" @click="onSearch">搜索</el-button>
-    <el-button type="primary" @click="onReset">重置</el-button>
+      <el-button type="primary" @click="onSearch">搜索</el-button>
+      <el-button type="primary" @click="onReset">重置</el-button>
     </el-form-item>
   </el-form>
   <!--表格区域-->
@@ -71,14 +70,14 @@ const listData = reactive([
       :data="listData"
       stripe
       style="width: 100%">
-    <el-table-column prop="number" label="学号" width="180" />
-    <el-table-column prop="name" label="姓名" width="180" />
+    <el-table-column prop="number" label="学号" width="180"/>
+    <el-table-column prop="name" label="姓名" width="180"/>
     <el-table-column fixed="right" label="操作" width="120">
       <template #default="{ row }">
         <el-button link type="primary" size="small" @click="onEdit(row)">
           编辑
         </el-button>
-        <el-button link type="primary" size="small"  @click="onDelete(row)">
+        <el-button link type="primary" size="small" @click="onDelete(row)">
           删除
         </el-button>
       </template>

@@ -9,10 +9,10 @@ const onAddTeacher=()=>{
   teacherInfoEditRef.value.open({})
 }
 
-const onEdit = (row) => {
+const onEdit = (row:any) => {
   teacherInfoEditRef.value.open({ row })
 }
-const onDelete = (row) => {
+const onDelete = (row:any) => {
   console.log(row)
 }
 const onSearch = () => {
@@ -64,7 +64,7 @@ const student_infoData = reactive([
 
 <template>
   <div><h3>
-    教室信息
+    教师信息
   </h3></div>
   <!--表单区域-->
   <el-form inline>

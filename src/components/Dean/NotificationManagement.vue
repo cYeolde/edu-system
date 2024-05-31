@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import {ref} from 'vue'
 import {
   Edit,
   Delete,
@@ -14,7 +14,7 @@ const value = ref('')
 const small = ref(false)
 const background = ref(false)
 const disabled = ref(false)
-const notificationEditRef=ref()
+const notificationEditRef = ref()
 const onSearch = () => {
   console.log('搜索通知');
 };
@@ -24,11 +24,11 @@ const onReset = () => {
   input2.value = '';
   value.value = '';
 };
-const onAdd=()=>{
-  notificationEditRef.value.open({ })
+const onAdd = () => {
+  notificationEditRef.value.open({})
 }
 //编辑逻辑
-const onEdit = ( row ) => {
+const onEdit = (row) => {
   notificationEditRef.value.open(row)
   console.log(row)
 }
@@ -39,24 +39,16 @@ const onDelete = (row) => {
 //通知数据
 const tableData = [
   {
-    id:'1',
+    id: '1',
     name: 'Tom',
     date: '2016-05-03',
-    time:'',
+    time: '',
     state: 'California',
     issuer: 'Los Angeles',
-    content:'No. 189, Grove St, Los Angeles',
+    content: 'No. 189, Grove St, Los Angeles',
   },
   {
-    id:2,
-    date: '2016-05-03',
-    name: 'Tom',
-    state: 'California',
-    issuer: 'Los Angeles',
-    object: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    id:2,
+    id: 2,
     date: '2016-05-03',
     name: 'Tom',
     state: 'California',
@@ -64,7 +56,15 @@ const tableData = [
     object: 'No. 189, Grove St, Los Angeles',
   },
   {
-    id:4,
+    id: 2,
+    date: '2016-05-03',
+    name: 'Tom',
+    state: 'California',
+    issuer: 'Los Angeles',
+    object: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    id: 4,
     date: '2016-05-03',
     name: 'Tom',
     state: 'California',
@@ -73,9 +73,9 @@ const tableData = [
   },
 ]
 //定义获取参数对象
-const params=ref({
-  pagenum:1,//当前页数
-  pagesize:5,//每页条数
+const params = ref({
+  pagenum: 1,//当前页数
+  pagesize: 5,//每页条数
 
 })
 //处理分页逻辑
@@ -87,9 +87,10 @@ const handleCurrentChange = (val: number) => {
 }
 
 //添加成功回调
-const onSuccess=(  )=>{}
+const onSuccess = () => {
+}
 
-  //获取通知列表...
+//获取通知列表...
 
 </script>
 
@@ -107,10 +108,10 @@ const onSuccess=(  )=>{}
   <!--通知表格-->
   <el-form inline>
     <el-form-item label="通知标题">
-      <el-input v-model="input1" style="width: 240px" placeholder="输入标题" />
+      <el-input v-model="input1" style="width: 240px" placeholder="输入标题"/>
     </el-form-item>
     <el-form-item label="通知发布人">
-      <el-input v-model="input2" style="width: 240px" placeholder="输入发布人" />
+      <el-input v-model="input2" style="width: 240px" placeholder="输入发布人"/>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSearch">搜索</el-button>
@@ -119,20 +120,20 @@ const onSuccess=(  )=>{}
     </el-form-item>
   </el-form>
   <!--表格区域-->
-    <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="name" label="通知" width="240"/>
-      <el-table-column prop="date" label="日期" width="180"/>
-      <el-table-column prop="time" label="时间"  width="180"/>
-      <el-table-column prop="state" label="状态" width="180"/>
-      <el-table-column prop="issuer" label="发布人" width="240"/>
-      <el-table-column fixed="right" label="操作" width="120">
-        <template #default="{ row }">
-          <!--利用作用于插槽row获得当前行的数据-->
-          <el-button circle plain type="primary" :icon="Delete"  @click="onDelete(row)"></el-button>
-          <el-button circle plain type="primary" :icon="Edit"    @click="onEdit(row)" ></el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+  <el-table :data="tableData" style="width: 100%">
+    <el-table-column prop="name" label="通知" width="240"/>
+    <el-table-column prop="date" label="日期" width="180"/>
+    <el-table-column prop="time" label="时间" width="180"/>
+    <el-table-column prop="state" label="状态" width="180"/>
+    <el-table-column prop="issuer" label="发布人" width="240"/>
+    <el-table-column fixed="right" label="操作" width="120">
+      <template #default="{ row }">
+        <!--利用作用于插槽row获得当前行的数据-->
+        <el-button circle plain type="primary" :icon="Delete" @click="onDelete(row)"></el-button>
+        <el-button circle plain type="primary" :icon="Edit" @click="onEdit(row)"></el-button>
+      </template>
+    </el-table-column>
+  </el-table>
   <div class="demo-pagination-block">
     <el-pagination
         v-model:current-page="params.pagenum"
@@ -147,13 +148,14 @@ const onSuccess=(  )=>{}
         style="margin-top:20px;justify-content:center "
     />
   </div>
-  <notification-edit ref="notificationEditRef"  @success="onSuccess"></notification-edit>
+  <notification-edit ref="notificationEditRef" @success="onSuccess"></notification-edit>
 </template>
 
 <style scoped>
 .demo-pagination-block + .demo-pagination-block {
   margin-top: 10px;
 }
+
 .demo-pagination-block .demonstration {
   margin-bottom: 16px;
 }
