@@ -2,7 +2,7 @@
 
 import Exam_manage from "@/components/Dean/Exam_manage.vue";
 import {ref, reactive} from 'vue'
-import {Delete, Edit, Search, Upload, Download, EditPen} from '@element-plus/icons-vue'
+import {Search, Upload, Download, EditPen} from '@element-plus/icons-vue'
 
 
 const examManageRef = ref()
@@ -12,9 +12,8 @@ const formInline = reactive({
   region: '',
   date: '',
 })
-const onEdit = (row:any) => {
+const onEdit = (row: any) => {
   examManageRef.value.open(row)
-  //console.log(row)
 }
 const onSearch = () => {
   console.log('正在搜索')
@@ -35,18 +34,18 @@ const onSchedule = () => {
 }
 
 //准备数据
-const defaultData = [
-  {
-    student_id: '',
-    name: '',
-    majority: '',
-    course_id: '111231',
-    subject_category: '',
-    state: true,
-    exam_venues: '',
-    exam_time: ''
-  },
-]
+// const defaultData = [
+//   {
+//     student_id: '',
+//     name: '',
+//     majority: '',
+//     course_id: '111231',
+//     subject_category: '',
+//     state: true,
+//     exam_venues: '',
+//     exam_time: ''
+//   },
+// ]
 const examData = [
   {
     name: '数据库原理',

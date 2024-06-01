@@ -35,7 +35,7 @@ const defaultData = {
 const formModel = ref({
   ...defaultData
 })
-const onPublish = (state) => {
+const onPublish = (state: any) => {
 
   //将已发布或者草稿的状态存入formModel
   formModel.value.state = state

@@ -6,7 +6,7 @@ import {ElTable} from 'element-plus'
 const visibleDialog = ref(false)
 
 //向父组件暴露对话框
-const open = (row:any) => {
+const open = (row: any) => {
   visibleDialog.value = true
   console.log(row)
 }

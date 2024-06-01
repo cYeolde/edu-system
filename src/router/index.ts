@@ -19,7 +19,7 @@ import StudentsInfo from "@/components/Dean/StudentsInfo.vue"
 
 const routes: Array<RouteRecordRaw> = [
     {
-        path:'/',
+        path:'/login',
         name:'login',
         component:LoginPage
     },

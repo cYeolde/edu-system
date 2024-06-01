@@ -98,7 +98,7 @@ const activeTab = ref('unread');
 
 const fetchNotifications = async () => {
   try {
-    const res = await fetch('https://api.example.com/notifications'); // 修改为您的后端API地址
+    const res = await fetch('https://localhost:8080/notifications'); // 修改为您的后端API地址
     if (!res.ok) {
       console.error('Network response was not ok');
     }
@@ -118,7 +118,7 @@ const fetchNotifications = async () => {
 
 const markAsRead = async (id: number) => {
   try {
-    const res = await fetch(`https://api.example.com/notifications/${id}/markAsRead`, {
+    const res = await fetch(`https://localhost:8080/notifications/${id}/markAsRead`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

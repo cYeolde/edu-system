@@ -46,12 +46,18 @@
         </el-icon>
         <template #title>通知</template>
       </el-menu-item>
+      <el-menu-item index="logout" @click="handleLogout">
+        <el-icon>
+          <Tools/>
+        </el-icon>
+        <template #title>退出登录</template>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {More, User, Check, Opportunity, Reading, Calendar, Notification} from '@element-plus/icons-vue'
+import {More, User, Check, Opportunity, Reading, Calendar, Notification, Tools} from '@element-plus/icons-vue'
 import {useRouter} from 'vue-router'
 import {ref} from 'vue'
 
@@ -64,6 +70,12 @@ const handleMenuSelect = (index: string) => {
 const toggleCollapse = () => {
   isCollapse.value = !isCollapse.value
 };
+
+const handleLogout=()=>{
+  console.log('logging out ...');
+  localStorage.removeItem('userToken');
+  router.push('/login');
+}
 </script>
 
 <style scoped>

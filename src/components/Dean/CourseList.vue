@@ -3,10 +3,10 @@
 import {ref, reactive} from 'vue'
 
 
-const onEdit = (row:any) => {
-
+const onEdit = (row: any) => {
+  console.log(row)
 }
-const onDelete = (row:any) => {
+const onDelete = (row: any) => {
   console.log(row)
 }
 const onSearch = () => {

@@ -26,7 +26,7 @@ const formModel = ref({
 //open({})显示是添加
 //open({id,……})说明是编辑
 //open暴露后，可以打开抽屉
-const open = (row:any) => {
+const open = (row: any) => {
   visibleDrawer.value = true//显示抽屉
 
   if (row.id) {
