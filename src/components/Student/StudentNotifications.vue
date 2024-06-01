@@ -46,7 +46,6 @@
 
 <script setup lang="ts">
 import {ref, onMounted} from 'vue';
-import {ElMessage} from 'element-plus';
 import {Delete} from '@element-plus/icons-vue';
 
 interface Notification {
@@ -60,33 +59,74 @@ const readNotifications = ref<Notification[]>([]);
 const activeTab = ref('unread');
 
 // 模拟数据
-const mockData: Notification[] = [
-  {id: 1, title: '系统通知1', content: '内容1...'},
-  {id: 2, title: '系统通知2', content: '内容2...'},
-  {id: 3, title: '系统通知3', content: '内容3...'}
-];
+// const mockData: Notification[] = [
+//   {id: 1, title: '系统通知1', content: '内容1...'},
+//   {id: 2, title: '系统通知2', content: '内容2...'},
+//   {id: 3, title: '系统通知3', content: '内容3...'}
+// ];
+//
+// const fetchNotifications = async () => {
+//   try {
+//     // 模拟请求后台获取通知数据
+//     const data = mockData;
+//
+//     // 过滤重复数据
+//     data.forEach(notification => {
+//       if (!unreadNotifications.value.some(n => n.id === notification.id)) {
+//         unreadNotifications.value.push(notification);
+//       }
+//     });
+//   } catch (error) {
+//     ElMessage.error('获取通知失败');
+//   }
+// };
+// const markAsRead = async (id: number) => {
+//   try {
+//     // 模拟请求后台标记通知为已读
+//     await new Promise((resolve) => setTimeout(resolve, 500));
+//
+//     // 移动通知到已读列表
+//     const notification = unreadNotifications.value.find(n => n.id === id);
+//     if (notification) {
+//       unreadNotifications.value = unreadNotifications.value.filter(n => n.id !== id);
+//       readNotifications.value.push(notification);
+//     }
+//   } catch (error) {
+//     ElMessage.error('标记通知为已读失败');
+//   }
+// };
 
 const fetchNotifications = async () => {
   try {
-    // 模拟请求后台获取通知数据
-    const data = mockData;
+    const res = await fetch('https://api.example.com/notifications'); // 修改为您的后端API地址
+    if (!res.ok) {
+      console.error('Network response was not ok');
+    }
+    const data: Notification[] = await res.json();
 
     // 过滤重复数据
     data.forEach(notification => {
-      if (!unreadNotifications.value.some(n => n.id === notification.id)) {
+      if (!unreadNotifications.value.some(n => n.id === notification.id) &&
+          !readNotifications.value.some(n => n.id === notification.id)) {
         unreadNotifications.value.push(notification);
       }
     });
   } catch (error) {
-    ElMessage.error('获取通知失败');
+    console.error('Error fetching notifications');
   }
 };
 
 const markAsRead = async (id: number) => {
   try {
-    // 模拟请求后台标记通知为已读
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
+    const res = await fetch(`https://api.example.com/notifications/${id}/markAsRead`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (!res.ok) {
+      console.error('Failed to mark notification as read');
+    }
     // 移动通知到已读列表
     const notification = unreadNotifications.value.find(n => n.id === id);
     if (notification) {
@@ -94,7 +134,7 @@ const markAsRead = async (id: number) => {
       readNotifications.value.push(notification);
     }
   } catch (error) {
-    ElMessage.error('标记通知为已读失败');
+    console.error('Error marking notification as read:', error);
   }
 };
 

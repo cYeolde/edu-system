@@ -63,9 +63,11 @@
 </template>
 
 <script setup>
-import {ref, computed} from 'vue';
+import {computed, ref, onMounted} from 'vue';
 import moment from 'moment';
 import {DArrowLeft, DArrowRight} from "@element-plus/icons-vue";
+
+// const weekCourse=ref([]);
 
 const weekCourse = [
   {
@@ -261,10 +263,11 @@ const colorList = [
   "#508AFA",
 ]
 
-const startTime = ref('2022.10.17');
-const endTime = ref('2022.10.23');
+const startTime = ref('');
+const endTime = ref('');
 const colorListRef = ref(colorList);
-const weekCourseRef = ref(weekCourse);
+const weekCourseRef = ref(weekCourse); //todo
+// const weeks = computed(() => weekCourse.value.map(item => item.week));
 const weeks = computed(() => weekCourseRef.value.map(item => item.week));
 const maxCourseLength = ref(0);
 const count = ref(0);
@@ -317,6 +320,27 @@ sortData();
 init();
 getWeek(0);
 
+const fetchCourseSchedule = async () => {
+  try {
+    const res = await fetch('http://localhost:8080/student/courseSchedule', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (!res.ok) {
+      console.error('Failed to fetch course schedule');
+    }
+    weekCourseRef.value = await res.json();
+    // sortData();
+    // init();
+    // getWeek(0);
+  } catch (error) {
+    console.error('Error fetching course schedule:', error);
+  }
+}
+
+onMounted(fetchCourseSchedule);
 </script>
 
 <style scoped lang="scss">
